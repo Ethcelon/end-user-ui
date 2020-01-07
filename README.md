@@ -391,8 +391,8 @@ These instructions apply to registration, password reset, and forgotten username
     },
 ```
 
-7. Make sure that your IDM access.js file is configured properly, based on [these docs](https://backstage.forgerock.com/docs/idm/6/integrators-guide/#uss-registration). You will see a forbidden access error if this file isn't configured correctly.
-8. Assuming you are on the development sever and have used default settings, you should now be able to navigate through two separate registration flows : `localhost:8081/#/registration` and `localhost:8081/#/registrationsecondflow`.
+5. Make sure that your IDM access.js file is configured properly, based on [these docs](https://backstage.forgerock.com/docs/idm/6/integrators-guide/#uss-registration). You will see a forbidden access error if this file isn't configured correctly.
+6. Assuming you are on the development sever and have used default settings, you should now be able to navigate through two separate registration flows : `localhost:8081/#/registration` and `localhost:8081/#/registrationsecondflow`.
 
 <a name="how-to-configure-notification-polling"></a>
 ### How to Configure Notification Polling
