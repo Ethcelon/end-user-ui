@@ -381,7 +381,7 @@ These instructions apply to registration, password reset, and forgotten username
 3. In the new Vue file, change the variable `apiType: 'registration'`, to match your `selfservice-` file. For example, if your configuration file is named `selfservice-registrationsecondflow` change the variable to `apiType: 'registrationsecondflow'`.
 4. Locate the router file `router/index.js` and add a route for the new file:
 
-``` json
+``` javascript
     {
         path: '/registrationsecondflow',
         name: 'RegistrationSecondFlow',
