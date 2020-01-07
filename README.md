@@ -377,7 +377,7 @@ These instructions apply to registration, password reset, and forgotten username
 ### How to Add Additional Registration Flows
 
 1. Add multiple `selfservice-registration.json` files, following [these docs](https://backstage.forgerock.com/docs/idm/6/integrators-guide/#uss-registration).
-2. For each additional `selfservice-registration.json` file, clone `Registration.vue` and rename it to match the corresponding new registration file. For example, if you named the configuration file `selfservice-registrationsecondflow.json`, name the vue file `RegistrationSecondFlow.vue`.
+2. For each additional `selfservice-registration.json` file, clone `index.vue` in `components/selfservice/registration` and rename it to match the corresponding new registration file. For example, if you named the configuration file `selfservice-registrationsecondflow.json`, name the vue file `RegistrationSecondFlow.vue`.
 3. In the new Vue file, change the variable `apiType: 'registration'`, to match your `selfservice-` file. For example, if your configuration file is named `selfservice-registrationsecondflow` change the variable to `apiType: 'registrationsecondflow'`.
 4. Locate the router file `router/index.js` and add a route for the new file:
 
@@ -385,15 +385,14 @@ These instructions apply to registration, password reset, and forgotten username
     {
         path: '/registrationsecondflow',
         name: 'RegistrationSecondFlow',
-        component: RegistrationSecondFlow,
+        component: () => import('@/components/selfservice/registration/registrationSecondFlow'),
         meta: { hideToolbar: true, bodyClass: 'fr-body-image' },
         props: true
     },
 ```
 
-5. At the top of the `router/index.js` file, import the new Vue file and ensure that it matches the component that you specified in the route: `import RegistrationSecondFlow from '@/components/mains/RegistrationSecondFlow';`
-6. Make sure that your IDM access.js file is configured properly, based on [these docs](https://backstage.forgerock.com/docs/idm/6/integrators-guide/#uss-registration). You will see a forbidden access error if this file isn't configured correctly.
-7. Assuming you are on the development sever and have used default settings, you should now be able to navigate through two separate registration flows : `localhost:8081/#/registration` and `localhost:8081/#/registrationsecondflow`.
+7. Make sure that your IDM access.js file is configured properly, based on [these docs](https://backstage.forgerock.com/docs/idm/6/integrators-guide/#uss-registration). You will see a forbidden access error if this file isn't configured correctly.
+8. Assuming you are on the development sever and have used default settings, you should now be able to navigate through two separate registration flows : `localhost:8081/#/registration` and `localhost:8081/#/registrationsecondflow`.
 
 <a name="how-to-configure-notification-polling"></a>
 ### How to Configure Notification Polling
